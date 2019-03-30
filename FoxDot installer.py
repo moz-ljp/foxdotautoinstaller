@@ -43,7 +43,7 @@ except:
 
 superColliderURL = "https://github.com/supercollider/supercollider/releases/download/Version-3.10.2/SuperCollider-3.10.2-Windows-x64-VS.exe"
 
-scdURL = "https://github-production-release-asset-2e65be.s3.amazonaws.com/178582065/8359f580-530a-11e9-893a-8b8123505d4b?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20190330%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20190330T164049Z&X-Amz-Expires=300&X-Amz-Signature=4ec633cbe3f205340ace77fa13c96b93776bb7c39e8139419594a150bea4a6cf&X-Amz-SignedHeaders=host&actor_id=39520581&response-content-disposition=attachment%3B%20filename%3DfoxinstallSupercollider.scd&response-content-type=application%2Foctet-stream"
+scdURL = "https://github-production-release-asset-2e65be.s3.amazonaws.com/178582065/d1242d00-530d-11e9-8a94-8fab2dca6cf5?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20190330%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20190330T170408Z&X-Amz-Expires=300&X-Amz-Signature=d15c75fedb152922722085de3d628cccb6a412634c394f37bd066d6ea1b35221&X-Amz-SignedHeaders=host&actor_id=39520581&response-content-disposition=attachment%3B%20filename%3DfoxinstallSupercollider.scd&response-content-type=application%2Foctet-stream"
 
 superColliderFoxQuark = 'Quarks.install("FoxDot")'
 
@@ -134,9 +134,11 @@ if(foxInstalled == True):
         os.remove(downloadDesktop+'/SuperCollider-Windows-x64-VS.exe')
         urllib.request.urlretrieve(scdURL, downloadDesktop+'/initial-run.scd')
         proc = subprocess.Popen(downloadDesktop+'/initial-run.scd', shell=True)
-        print("Press CTRL + Enter on the first line and wait")
+        print("Press CTRL + Enter on line 1 and wait")
         input("Press enter when it is complete")
         print("Press CTRL + Enter on line 3 and wait")
+        input("Press enter when it is complete")
+        print("Press CTRL + Enter on line 5 and wait")
         input("Press enter when it is complete")
         presGap()
         print("Starting FoxDot")
