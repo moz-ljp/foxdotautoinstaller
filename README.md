@@ -2,5 +2,5 @@
 
 ```diff
 + A Python file that (semi) automatically installs FoxDot and Supercollider
-- Created by moz-ljp
++ Created by moz-ljp
 ```
