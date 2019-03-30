@@ -43,6 +43,8 @@ except:
 
 superColliderURL = "https://github.com/supercollider/supercollider/releases/download/Version-3.10.2/SuperCollider-3.10.2-Windows-x64-VS.exe"
 
+scdURL = "https://github-production-release-asset-2e65be.s3.amazonaws.com/178582065/8359f580-530a-11e9-893a-8b8123505d4b?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20190330%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20190330T164049Z&X-Amz-Expires=300&X-Amz-Signature=4ec633cbe3f205340ace77fa13c96b93776bb7c39e8139419594a150bea4a6cf&X-Amz-SignedHeaders=host&actor_id=39520581&response-content-disposition=attachment%3B%20filename%3DfoxinstallSupercollider.scd&response-content-type=application%2Foctet-stream"
+
 superColliderFoxQuark = 'Quarks.install("FoxDot")'
 
 foxInstalled = False
@@ -130,29 +132,16 @@ if(foxInstalled == True):
         os.system(downloadDesktop+'/SuperCollider-Windows-x64-VS.exe')
         presGap()
         os.remove(downloadDesktop+'/SuperCollider-Windows-x64-VS.exe')
-        copy = input("Do you want the needed command to be copied to your clipboard (y/n)")
-        copy = copy.lower()
-        if(copy == "y"):
-            pyperclip.copy('Quarks.install("FoxDot")')
-        else:
-            print("Type:", 'Quarks.install("FoxDot")', "into SuperCollider")
-        presGap()
-        print("Paste the copied code into SuperCollider")
-        print("Highlight the code and press CTRL + ENTER")
-        input("Press enter to continue once this has finished")
-        presGap()
-        copyTwo = input("Do you want the next command copied to clipboard (y/n)")
-        copyTwo = copyTwo.lower()
-        if(copyTwo == "y"):
-            pyperclip.copy('FoxDot.start()')
-        else:
-            print("Type: 'FoxDot.start()' into SuperCollider")
-            print("Highlight the code and press CTRL + ENTER")
-        input("Press enter to continue once this has finished")
+        urllib.request.urlretrieve(scdURL, downloadDesktop+'/initial-run.scd')
+        proc = subprocess.Popen(downloadDesktop+'/initial-run.scd', shell=True)
+        print("Press CTRL + Enter on the first line and wait")
+        input("Press enter when it is complete")
+        print("Press CTRL + Enter on line 3 and wait")
+        input("Press enter when it is complete")
         presGap()
         print("Starting FoxDot")
         after()
-        os.system("python -m FoxDot")
+        procTwo = subprocess.Popen("python -m FoxDot", shell=True)
     except:
         print("Something went wrong trying to install SuperCollider")
 
